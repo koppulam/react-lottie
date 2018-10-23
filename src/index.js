@@ -31,6 +31,8 @@ export default class Lottie extends React.Component {
 
     this.anim = lottie.loadAnimation(this.options);
     this.registerEvents(eventListeners);
+
+    this.el.firstElementChild.setAttribute('focusable', false);
   }
 
   componentWillUpdate(nextProps /* , nextState */) {
@@ -125,6 +127,7 @@ export default class Lottie extends React.Component {
       height,
       ariaRole,
       ariaLabel,
+      tabIndex,
       isClickToPauseDisabled,
       title,
     } = this.props;
@@ -164,7 +167,7 @@ export default class Lottie extends React.Component {
         title={title}
         role={ariaRole}
         aria-label={ariaLabel}
-        tabIndex="0"
+        tabIndex={tabIndex ? tabIndex : '-1'}
       />
     );
   }
